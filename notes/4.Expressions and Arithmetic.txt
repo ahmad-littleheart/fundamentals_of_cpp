@@ -1,0 +1,18 @@
+double d = 1.6;
+int i = d;
+This code will warn us,because double is wider than int.There can be data loss. Therefore,we have to use this method:
+i = static_cast<int>(d);
+
+------------------------------------------------------------------------
+The widening conversion is always safe, so a type cast is not required. Narrowing is a potentially dangerous operation, and using an  explicit cast does not remove the danger—it simply silences the compiler.
+------------------------------------------------------------------------
+• Precedence—when an expression contains two different kinds of operators, which should be applied first?
+• Associativity—when an expression contains two operators with the same precedence, which should be applied first?
+------------------------------------------------------------------------
+There are 3 categories of an errors: 
+1.compile-time: usually it is syntax error.Misuse of the language.
+2.run-time: For example dividing to zero.It will crash when user enters 0 as divisor.
+3.logic: Program works but in wrong way.There is a "bug" in the code.
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------

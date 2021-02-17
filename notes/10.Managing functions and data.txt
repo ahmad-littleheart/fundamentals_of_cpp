@@ -1,0 +1,16 @@
+global variable: bezi variable-lari programin her yerinde islede bilmeyimiz ucun global variable anlayisi movcuddur. Global variable has global scope.  
+---------------------------------------------------------------------------------------------------
+Scope: her variable-in oz scope-u var. oz ehate dairesi. O dairenden qiraqda taninmir. Bu daire, esasen funksiyanin ve ya operatorun (for, if, switch, while) curly brace-leri olur. Demeli, her variable hemin curly brace-lerin icinde taninir. Misal ucun:    
+void d(){
+int b=12;
+}
+
+int main(){
+int a=12;
+cout<<a; // 12
+cout<<b; // error: b was not declared in this `scope`
+}
+yuxaridaki errordan anlasilir ki, b bu scope deyil, yoxdur. 
+---------------------------------------------------------------------------------------------------
+
+

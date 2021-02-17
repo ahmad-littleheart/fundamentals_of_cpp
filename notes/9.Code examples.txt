@@ -1,0 +1,203 @@
+----------------------------------------------------------------------------------------------------------------------------
+						1.Better Organized Prime Generator 
+----------------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <cmath>
+using namespace std;
+/*
+* is_prime(n)
+Determines the primality of a given value
+*
+n an integer to test for primality
+*
+Returns true if n is prime; otherwise, returns false
+*
+*/
+bool is_prime(int n) {
+bool result = true; // Provisionally, n is prime
+double r = n, root = sqrt(r);
+// Try all possible factors from 2 to the square
+// root of n
+for (int trial_factor = 2;
+result && trial_factor <= root; trial_factor++)
+result = (n % trial_factor != 0);
+return result;
+}
+----------------------------------------------------------------------------------------------------------------------------
+						2.Better Die Rolling Simulator
+----------------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+/*
+* initialize_die
+Initializes the randomness of the die
+*
+*/
+void initialize_die()
+{
+// Set the random seed value
+    srand(static_cast<unsigned>(time(0)));
+}
+/*
+* show_die(spots)
+Draws a picture of a die with number of spots
+*
+indicated
+*
+spots is the number of spots on the top face
+*
+*/
+void show_die(int spots)
+{
+    cout << "+-------+" << endl;
+    switch (spots)
+    {
+    case 1:
+        cout << "|      |" << endl;
+        cout << "|   *  |" << endl;
+        cout << "|      |" << endl;
+        break;
+    case 2:
+        cout << "|*     |" << endl;
+        cout << "|      |" << endl;
+        cout <<"|     *|" << endl;
+        break;
+    case 3:
+        cout << "|*     |" << endl;
+        cout << "|   *  |" << endl;
+        cout << "|     *|" << endl;
+        break;
+    case 4:
+        cout << "|*     *|" << endl;
+        cout << "|       |" << endl;
+        cout << "|*     *|" << endl;
+        break;
+    case 5:
+        cout << "|*     *|" << endl;
+        cout << "|   *   |" << endl;
+        cout << "|*     *|" << endl;
+        break;
+    case 6:
+        cout << "|*     *|" << endl;
+        cout << "|*     *|" << endl;
+        cout << "|*     *|" << endl;
+        break;
+    default:
+        cout <<" *** Error: illegal die value ***" << endl;
+        break;
+    }
+    cout << "+-------+" << endl;
+}
+int roll()
+{
+    return rand() % 6 + 1;
+}
+/*
+* main
+Simulates the roll of a die three times
+*
+*/
+int main()
+{
+// Initialize the die
+    initialize_die();
+// Roll the die three times
+    for (int i = 0; i < 3; i++)
+        show_die(roll());
+}
+----------------------------------------------------------------------------------------------------------------------------
+						3.Floating-point Equality
+----------------------------------------------------------------------------------------------------------------------------
+						4.Multiplication Table with Functions
+#include <iostream>
+#include <iomanip>
+using namespace std;
+// Print the column labels for an n x n multiplication table.
+void col_numbers(int n) {
+cout << "";
+for (int column = 1; column <= n; column++)
+cout << setw(4) << column; // Print heading for this column.
+cout << endl;
+}
+// Print the table's horizontal line at the top of the table
+// beneath the column labels.
+void col_line(int n) {
+cout << "+";
+for (int column = 1; column <= n; column++)
+cout << "----";
+// Print separator for this row.
+cout << endl;
+}
+// Print the title of each column across the top of the table
+// including the line separator.
+void col_header(int n) {
+// Print column titles
+col_numbers(n);
+// Print line separator
+col_line(n);
+}
+// Print the title that appears before each row of the table's
+// body.
+void row_header(int n) {
+cout << setw(4) << n << " |"; // Print row label.
+}
+// Print the line of text for row n
+// This includes the row number and the
+// contents of each row.
+void print_row(int row, int columns) {
+row_header(row);
+for (int col = 1; col <= columns; col++)
+cout << setw(4) << row*col;
+// Display product
+cout << endl;
+// Move cursor to next row
+}
+// Print the body of the n x n multiplication table
+void print_contents(int n) {
+for (int current_row = 1; current_row <= n; current_row++)
+print_row(current_row, n);
+}
+// Print a multiplication table of size n x n.
+void timestable(int n) {
+// First, print column heading
+col_header(n);
+// Print table contents
+print_contents(n);
+}
+int get_int_range(int first, int last) {
+if (first > last) {
+int temp = first;
+first = last;
+last = temp;
+}
+// Insist on values in the range first...last
+cout << "Please enter a value in the range "
+<< first << "..." << last << ": ";
+int in_value;
+// User input value
+bool bad_entry;
+do {
+cin >> in_value;
+bad_entry = (in_value < first || in_value > last);
+if (bad_entry) {
+cout << in_value << " is not in the range "
+<< first << "..." << last << endl;
+cout << "Please try again: ";
+}
+}
+while (bad_entry);
+// in_value at this point is guaranteed to be within range
+return in_value;
+}
+int main() {
+// Get table size from user; allow values in the
+// range 1...18.
+int size = get_int_range(1,99);
+// Print a size x size multiplication table
+timestable(size);
+}
+
+----------------------------------------------------------------------------------------------------------------------------
+
